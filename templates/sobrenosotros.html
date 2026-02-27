@@ -9,7 +9,17 @@
 {{ form.titulo }}
 {{ form.enviar }}
 </form>
-{% if titulo %}
-    <h2>{{ titulo }}</h2>
-{% endif %}
+<hr>
+<h3>Lista de Tareas</h3>
+<ul>
+    {% for tarea in tareas %}
+        <li>
+            {{ tarea.titulo }} 
+            <a href="{{ url_for('editar', id=tarea.id) }}">Editar</a>
+        </li>
+    {% else %}
+        <li>Aún no hay tareas guardadas.</li>
+    {% endfor %}
+</ul>
+
 {% endblock %}
