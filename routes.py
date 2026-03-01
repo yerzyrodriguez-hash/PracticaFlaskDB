@@ -41,5 +41,13 @@ def editar(id):
         return redirect(url_for('sobrenosotros'))
     return render_template('editar.html', form=formulario, tarea=tarea)
 
+@app.route('/eliminar/<int:id>')
+def eliminar(id):
+    tarea = Tarea.query.get_or_404(id)
+    db.session.delete(tarea)
+    db.session.commit()
+    print('Tarea eliminada:', tarea.titulo)
+    return redirect(url_for('sobrenosotros'))
+
 if __name__== '__main__' :
     app.run(debug=True)

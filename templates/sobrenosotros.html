@@ -16,6 +16,7 @@
         <li>
             {{ tarea.titulo }} 
             <a href="{{ url_for('editar', id=tarea.id) }}">Editar</a>
+            <a href="{{ url_for('eliminar', id=tarea.id) }}" onclick="return confirm('Desea eliminar esta tarea?')">Eliminar</a>
         </li>
     {% else %}
         <li>Aún no hay tareas guardadas.</li>
